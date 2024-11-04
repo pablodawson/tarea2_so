@@ -105,14 +105,15 @@ int main() {
     ThreadArgs thread_args[4];
     
     // Configurar argumentos para cada hilo
-    for (int i = 0; i < 4; i++) {
+    int i = 0;
+    for (i = 0; i < 4; i++) {
         sprintf(thread_args[i].input_file, "Datos%d.txt", i+1);
         sprintf(thread_args[i].output_file, "Out%d.txt", i+1);
         thread_args[i].algorithm = (i < 2) ? 0 : 1;  // 0=QuickSort, 1=BubbleSort
     }
 
     // Crear los hilos
-    for (int i = 0; i < 4; i++) {
+    for (i = 0; i < 4; i++) {
         printf("Creando hilo %d para ordenar %s usando %s\n", 
                i+1, 
                thread_args[i].input_file,
@@ -125,7 +126,7 @@ int main() {
     }
 
     // Esperar a que todos los hilos terminen y mostrar resultados
-    for (int i = 0; i < 4; i++) {
+    for (i = 0; i < 4; i++) {
         pthread_join(threads[i], NULL);
         
         // Leer y mostrar archivo de salida
