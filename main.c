@@ -39,8 +39,9 @@ void swap(int* a, int* b) {
 int partition(int arr[], int low, int high) {
     int pivot = arr[high];
     int i = (low - 1);
+    int j = 0;
 
-    for (int j = low; j <= high - 1; j++) {
+    for (j = low; j <= high - 1; j++) {
         if (arr[j] <= pivot) {
             i++;
             swap(&arr[i], &arr[j]);
@@ -92,7 +93,8 @@ void* sort_file(void* args) {
         pthread_exit(NULL);
     }
 
-    for (int i = 0; i < count; i++) {
+    int i = 0;
+    for (i = 0; i < count; i++) {
         fprintf(output_file, "%d\n", numbers[i]);
     }
     fclose(output_file);
